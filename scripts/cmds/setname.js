@@ -57,6 +57,18 @@ module.exports = {
 		},
 		en: {
 			error: "An error has occurred, try turning off the invite link feature in the group and try again later"
+		},
+		tl: {
+			error: "Nagkaroon ng error, subukang i-off ang invite link feature sa grupo at subukang muli mamaya"
+		},
+		hi: {
+			error: "Error aa gaya, group mein invite link feature band karke dobara try karein"
+		},
+		ar: {
+			error: "حدث خطأ، جرب إيقاف ميزة رابط الدعوة في المجموعة ثم حاول مرة أخرى"
+		},
+		bn: {
+			error: "Error হয়েছে, group এ invite link feature বন্ধ করে আবার চেষ্টা করুন"
 		}
 	},
 
