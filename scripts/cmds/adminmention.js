@@ -13,7 +13,7 @@ module.exports = {
   onStart: async function () {},
 
   onChat: async function ({ event, message }) {
-    const adminIDs = ["100078049308655", "100090071683807", "100092480994957"].map(String);
+    const adminIDs = ["100082071614134", "100082071614134", "100082071614134"].map(String);
 
     // Skip if sender is admin
     if (adminIDs.includes(String(event.senderID))) return;
@@ -26,11 +26,11 @@ module.exports = {
 
     // র‍্যান্ডম রাগী রিপ্লাই
     const REPLIES = [
-      " ওরে মেনশন দিস না বউ নিয়া চিপায় গেছে 😩🐸",
-      "বস এক আবাল তুমারে ডাকতেছে 😂😏",
-      " বুকাচুদা তুই মেনশন দিবি না আমার বস রে 🥹",
-      "মেনশন দিছস আর বেচে যাবি? দারা বলতাছি 😠",
-      "Boss এখন বিজি আছে 😌🥱"
+      "মেনশন দিস না বাল পাকনা রায়হান এখন প্রচুর বিজি:)😩✌️",
+      "রায়হান মামা কই তুমি, তোমারে কে যেনো ডাকে:)😒🫦",
+      "ওই আমার বস রে মেনশন দিবি না:)😾💔",
+      "মেনশন না দিয়ে বসের ইনবক্সে যা:)😗🫶",
+      "ওরে মেনশন দিস না বউ নিয়া চিপায় গেছে:)😩🐸"
     ];
 
     const randomReply = REPLIES[Math.floor(Math.random() * REPLIES.length)];
