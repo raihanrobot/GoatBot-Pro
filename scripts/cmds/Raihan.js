@@ -3,24 +3,26 @@ module.exports.config = {
     version: "1.0.0",
     hasPermssion: 0,
     credits: "Raihan",
-    description: "বসের নাম প্রোটেক্ট",
-    commandCategory: "no prefix",
+    description: "বসের নাম প্রোটেক্ট করে",
+    commandCategory: "no prefix",  // এই লাইনটা মাস্ট
     usages: "",
-    cooldowns: 1,
-    dependencies: {}
+    cooldowns: 1
 };
 
-module.exports.handleEvent = async function({ api, event, Users }) {
-    var { threadID, messageID, body, senderID } = event;
-    if (typeof body == "undefined") return;
-    if (senderID == api.getCurrentUserID()) return;
+module.exports.handleEvent = async function({ api, event }) {
+    const { threadID, messageID, body, senderID } = event;
     
-    var content = body.trim().toLowerCase();
+    if (!body || senderID == api.getCurrentUserID()) return;
     
-    if (content.includes("raihan") || content.includes("রায়হান") || content.includes("রাইহান")) {
-        var name = await Users.getNameUser(senderID);
-        var msg = `আমার রাইহান বসের নাম ধরো কেন 😡\n${name}, বসের নাম মুখে নিবা না!`;
-        return api.sendMessage(msg, threadID, messageID);
+    const msg = body.toLowerCase();
+    
+    if (msg.includes("raihan") || msg.includes("রায়হান") || msg.includes("রাইহান")) {
+        const replies = [
+            "আমার রাইহান বসের নাম ধরো কেন 😡",
+            "বসের নাম মুখে নিবা না হুশিয়ার ⚠️",
+            "রাইহান ভাইরে ডাকতেছো? পারমিশন নিছো? 😤"
+        ];
+        return api.sendMessage(replies[Math.floor(Math.random() * replies.length)], threadID, messageID);
     }
 };
 
