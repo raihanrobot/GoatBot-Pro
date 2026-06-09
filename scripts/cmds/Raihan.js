@@ -5,35 +5,22 @@ module.exports.config = {
     credits: "Raihan",
     description: "বসের নাম প্রোটেক্ট",
     commandCategory: "no prefix",
-    usages: "অটো",
-    cooldowns: 3
+    usages: "",
+    cooldowns: 1,
+    dependencies: {}
 };
 
-module.exports.handleEvent = async function({ api, event }) {
-    const { threadID, messageID, body, senderID } = event;
-    
-    if (!body) return;
-    if (!event.isGroup) return;
-    
-    const msg = body.toLowerCase();
-    
-    // বট নিজে নাম নিলে স্কিপ
+module.exports.handleEvent = async function({ api, event, Users }) {
+    var { threadID, messageID, body, senderID } = event;
+    if (typeof body == "undefined") return;
     if (senderID == api.getCurrentUserID()) return;
     
-    // Raihan ডিটেক্ট
-    if (msg.includes("raihan") || msg.includes("রায়হান") || msg.includes("রাইহান")) {
-        
-        api.sendTypingIndicator(threadID);
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        const replies = [
-            "আমার রাইহান বসের নাম ধরো কেন 😡",
-            "বসের নাম মুখে নিবা না হুশিয়ার ⚠️",
-            "রাইহান ভাইরে ডাকতেছো? পারমিশন নিছো? 😤",
-            "বসের নাম লইয়া খেলবা না কইলাম 🔥"
-        ];
-        
-        return api.sendMessage(replies[Math.floor(Math.random() * replies.length)], threadID, messageID);
+    var content = body.trim().toLowerCase();
+    
+    if (content.includes("raihan") || content.includes("রায়হান") || content.includes("রাইহান")) {
+        var name = await Users.getNameUser(senderID);
+        var msg = `আমার রাইহান বসের নাম ধরো কেন 😡\n${name}, বসের নাম মুখে নিবা না!`;
+        return api.sendMessage(msg, threadID, messageID);
     }
 };
 
